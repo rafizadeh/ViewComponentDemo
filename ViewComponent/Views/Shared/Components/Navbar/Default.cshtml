@@ -1,0 +1,157 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model IEnumerable<Menu>
+<!-- Main header -->
+<header class="main-header">
+    <!-- Header info text-->
+    <div class="header-info-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-lg-6">
+                    <ul class="contact-info">
+                        <li>
+                            <i class="icofont-phone"></i>
+                            Call us: +44 458 7895
+                        </li>
+                        <li>
+                            <i class="icofont-location-pin"></i>
+                            210 Quadra Street Victoria, Canada
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-lg-6">
+                    <ul class="social-links">
+                        <li>
+                            <a href="#">
+                                <i class="icofont-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icofont-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icofont-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icofont-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icofont-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Header info text -->
+    <!-- Navbar -->
+    <div class="navbar-container header-sticky">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="~/assets/img/logo.png" alt="Logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto">
+                        @foreach (var item in Model)
+                        {
+                            if (item.SubMenus.Count == 0)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="@item.ControllerName " asp-action="@item.ActionName">@item.Name</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item active dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @item.Name
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        @foreach (var sub in item.SubMenus)
+                                        {
+                                            <a class="dropdown-item active" href="index.html">@sub.Name</a>
+
+                                        }
+                                    </div>
+                                </li>
+                            }
+
+                        }
+                        @*
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Departments
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="department-details.html">Cardiology</a>
+                                    <a class="dropdown-item" href="department-details.html">Gynecology</a>
+                                    <a class="dropdown-item" href="department-details.html">Neurology</a>
+                                    <a class="dropdown-item" href="department-details.html">Orthopedics</a>
+                                    <a class="dropdown-item" href="department-details.html">Gastrology</a>
+                                    <a class="dropdown-item" href="department-details.html">Pulmonology</a>
+                                    <a class="dropdown-item" href="department-details.html">Laboratory</a>
+                                    <a class="dropdown-item" href="department-details.html">Urology</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pages
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="services.html">Services</a>
+                                    <a class="dropdown-item" href="doctors.html">Our Doctor</a>
+                                    <a class="dropdown-item" href="doctors-details.html">Single Doctor</a>
+                                    <a class="dropdown-item" href="appointment.html">Book Appoinment</a>
+                                    <a class="dropdown-item" href="faq.html">FAQ</a>
+                                    <a class="dropdown-item" href="error.html">Error 404</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Blog
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="blog.html">Blog</a>
+                                    <a class="dropdown-item" href="blog-details.html">Single Blog</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>*@
+                    </ul>
+
+                    <div class="appointment-inline my-lg-0">
+                        <a href="appointment.html" class="appointment-btn">
+                            Make an Appointment
+                            <i class="icofont-simple-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- End Navbar -->
+</header>
+<!-- End Main header -->
